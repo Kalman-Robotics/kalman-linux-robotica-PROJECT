@@ -15,12 +15,12 @@ StartLimitBurst=3
 [Service]
 Type=simple
 
-# >>> TU CONFIGURACIÓN — TODO 1
+# >>> TU CONFIGURACIÓN — EL USUARIO
 # Escribe el usuario local que ejecutará el monitor.
 User=
 # <<< FIN DE TU CONFIGURACIÓN
 
-# >>> TU CONFIGURACIÓN — TODO 2
+# >>> TU CONFIGURACIÓN — LA RUTA Y EL INTERVALO
 # Escribe la ruta absoluta de tu monitor_nexus.sh y pásale como argumento el
 # intervalo en segundos que mediste.
 ExecStart=

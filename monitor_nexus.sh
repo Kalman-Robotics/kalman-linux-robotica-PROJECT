@@ -6,7 +6,7 @@
 #
 # Completa únicamente las seis zonas delimitadas con:
 #
-#   >>> TU CÓDIGO — TODO N
+#   >>> TU CÓDIGO — <NOMBRE DE LA ZONA>
 #   <<< FIN DE TU CÓDIGO
 #
 # Todo lo marcado como NO MODIFICAR ya viene resuelto: la configuración de la
@@ -37,21 +37,25 @@ export ROS_IPV6=on
 # CONFIGURACIÓN DEL MONITOR
 # ============================================================
 
-# >>> TU CÓDIGO — TODO 1
+# >>> TU CÓDIGO — EL INTERVALO
 # Guarda el primer argumento en la variable INTERVALO.
 INTERVALO=
 # <<< FIN DE TU CÓDIGO
 
-# >>> TU CÓDIGO — TODO 2
+# >>> TU CÓDIGO — LA COMPROBACIÓN DEL INTERVALO
 # Si no se recibió un intervalo, muestra:
 #   Uso: ./monitor_nexus.sh SEGUNDOS
 # y termina con un código de error.
 # <<< FIN DE TU CÓDIGO
 
-# >>> TU CÓDIGO — TODO 3
-# Define la ruta de la carpeta `logs` situada dentro de `mision_nexus`, la misma
-# carpeta donde guardaste los datos de la Parte 1. Tiene que funcionar sin
-# importar desde dónde se ejecute el script.
+# >>> TU CÓDIGO — LA CARPETA DE REGISTROS
+# Guarda en LOG_DIR la ruta de la carpeta `logs` de tu `mision_nexus`, al lado de
+# la carpeta `datos` que creaste en la Parte 1. No hace falta que exista: la
+# siguiente línea la crea.
+#
+# Escribe la ruta COMPLETA, desde tu carpeta personal. Una ruta relativa como
+# `logs` o `../logs` parecería funcionar al probarlo a mano, pero systemd lanza el
+# script desde otro directorio y crearía la carpeta en un sitio equivocado.
 LOG_DIR=
 # <<< FIN DE TU CÓDIGO
 
@@ -69,7 +73,7 @@ capturar_estado() {
     # conservar una sola muestra completa dentro de TELEMETRIA.
     TELEMETRIA=$(ros2 topic echo --once /telemetry 2>/dev/null)
 
-    # >>> TU CÓDIGO — TODO 4
+    # >>> TU CÓDIGO — LA LECTURA FALLIDA
     # Comprueba el código del comando anterior. Si la lectura falló, muestra:
     #   No se pudo leer la telemetría de Nexus
     # y termina con un código de error.
@@ -90,7 +94,7 @@ capturar_estado() {
         dist_back_mm \
         dist_right_mm
     do
-        # >>> TU CÓDIGO — TODO 5
+        # >>> TU CÓDIGO — EL FILTRO DE CADA CAMPO
         # Filtra el CAMPO actual de TELEMETRIA y añade el resultado a LOG_FILE.
         # Es el mismo filtro de la Parte 1, ahora sobre una variable en vez de
         # un archivo. Cada muestra debe quedar con ocho líneas de campo.
@@ -107,7 +111,7 @@ capturar_estado() {
 # MONITOR CONTINUO
 # ============================================================
 
-# >>> TU CÓDIGO — TODO 6
+# >>> TU CÓDIGO — EL CICLO
 # Crea un ciclo que, mientras el monitor permanezca activo:
 #   1. llame a capturar_estado;
 #   2. espere la cantidad de segundos guardada en INTERVALO;
