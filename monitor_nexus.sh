@@ -45,10 +45,18 @@ INTERVALO=
 # <<< FIN DE TU CÓDIGO
 
 # >>> TU CÓDIGO — LA COMPROBACIÓN DEL INTERVALO
-# Si INTERVALO quedó vacío, es que nadie pasó ese argumento. En ese caso el script
-# no debe continuar: muestra en la terminal
+# Si INTERVALO quedó vacío, es que se ejecutó el script sin pasarle nada. En ese
+# caso no debe arrancar el monitor: tiene que avisar y terminar.
+#
+# Comportamiento que se busca:
+#
+#   $ ./monitor_nexus.sh
 #   Uso: ./monitor_nexus.sh SEGUNDOS
-# y termina ahí mismo, devolviendo un valor distinto de cero para indicar el fallo.
+#   $
+#
+# La línea con $ delante es lo que escribe quien lo ejecuta. La otra es el mensaje
+# que muestras tú. Después de mostrarlo, termina el script devolviendo un valor
+# distinto de cero.
 # <<< FIN DE TU CÓDIGO
 
 # >>> TU CÓDIGO — LA CARPETA DE REGISTROS
