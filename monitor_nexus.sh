@@ -38,14 +38,17 @@ export ROS_IPV6=on
 # ============================================================
 
 # >>> TU CÓDIGO — EL INTERVALO
-# Guarda el primer argumento en la variable INTERVALO.
+# Al script se le pasan los segundos de espera al ejecutarlo, así:
+#   ./monitor_nexus.sh 30
+# Guarda ese primer argumento en la variable INTERVALO.
 INTERVALO=
 # <<< FIN DE TU CÓDIGO
 
 # >>> TU CÓDIGO — LA COMPROBACIÓN DEL INTERVALO
-# Si no se recibió un intervalo, muestra:
+# Si INTERVALO quedó vacío, es que nadie pasó ese argumento. En ese caso el script
+# no debe continuar: muestra en la terminal
 #   Uso: ./monitor_nexus.sh SEGUNDOS
-# y termina con un código de error.
+# y termina ahí mismo, devolviendo un valor distinto de cero para indicar el fallo.
 # <<< FIN DE TU CÓDIGO
 
 # >>> TU CÓDIGO — LA CARPETA DE REGISTROS
@@ -74,9 +77,16 @@ capturar_estado() {
     TELEMETRIA=$(ros2 topic echo --once /telemetry 2>/dev/null)
 
     # >>> TU CÓDIGO — LA LECTURA FALLIDA
-    # Comprueba el código del comando anterior. Si la lectura falló, muestra:
+    # La línea de arriba intentó leer el robot. Puede fallar: sin conexión, o con
+    # la reserva ya terminada. Comprueba si funcionó consultando el código de
+    # salida que dejó ese comando.
+    #
+    # Si falló, muestra en la terminal
     #   No se pudo leer la telemetría de Nexus
-    # y termina con un código de error.
+    # y termina el script devolviendo un valor distinto de cero.
+    #
+    # El código de salida es siempre el del ÚLTIMO comando ejecutado, así que
+    # consúltalo antes de hacer ninguna otra cosa.
     # <<< FIN DE TU CÓDIGO
 
     # NO MODIFICAR — identifica la muestra y abre su bloque en el registro.
@@ -95,9 +105,16 @@ capturar_estado() {
         dist_right_mm
     do
         # >>> TU CÓDIGO — EL FILTRO DE CADA CAMPO
-        # Filtra el CAMPO actual de TELEMETRIA y añade el resultado a LOG_FILE.
-        # Es el mismo filtro de la Parte 1, ahora sobre una variable en vez de
-        # un archivo. Cada muestra debe quedar con ocho líneas de campo.
+        # Este bloque se repite ocho veces, una por campo. En cada vuelta, CAMPO
+        # contiene el nombre de uno de ellos: primero odom_pos_x, luego
+        # odom_pos_y, y así hasta dist_right_mm.
+        #
+        # Saca de TELEMETRIA la línea de ese CAMPO y añádela al final de LOG_FILE.
+        # Es el mismo filtrado que hiciste en la Parte 1, solo que el texto está
+        # ahora en una variable en vez de en un archivo.
+        #
+        # Al terminar las ocho vueltas, la muestra debe tener ocho líneas: ni una
+        # más ni una menos.
         :
         # <<< FIN DE TU CÓDIGO
     done
