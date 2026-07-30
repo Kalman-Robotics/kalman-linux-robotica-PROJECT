@@ -22,7 +22,7 @@ User=
 
 # >>> TU CONFIGURACIÓN — TODO 2
 # Escribe la ruta absoluta de tu monitor_nexus.sh y pásale el intervalo en
-# segundos como argumento. Usa 10.
+# segundos como argumento. Usa 30.
 ExecStart=
 # <<< FIN DE TU CONFIGURACIÓN
 
