@@ -1,0 +1,38 @@
+# Misión Nexus — Parte 2
+# Unidad local de systemd para administrar el monitor desde WSL2 o Ubuntu.
+# Nunca se instala dentro de Nexus.
+#
+# Completa únicamente las zonas delimitadas con:
+#   >>> TU CONFIGURACIÓN
+#   <<< FIN DE TU CONFIGURACIÓN
+
+[Unit]
+Description=Monitor local del robot Nexus
+After=network-online.target
+StartLimitIntervalSec=60
+StartLimitBurst=3
+
+[Service]
+Type=simple
+
+# >>> TU CONFIGURACIÓN — TODO 1
+# Escribe el usuario local que ejecutará el monitor.
+User=
+# <<< FIN DE TU CONFIGURACIÓN
+
+# >>> TU CONFIGURACIÓN — TODO 2
+# Escribe la ruta absoluta de tu monitor_nexus.sh y pásale el intervalo en
+# segundos como argumento. Usa 10.
+ExecStart=
+# <<< FIN DE TU CONFIGURACIÓN
+
+# Reinicia únicamente cuando el monitor informa un fallo. El límite situado en
+# Unit evita reintentos indefinidos si la sesión con el robot ya no está activa.
+Restart=on-failure
+RestartSec=5
+
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

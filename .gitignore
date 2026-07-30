@@ -1,0 +1,7 @@
+# Nada de lo que genera el proyecto entra al repositorio.
+logs/
+datos/
+entrega/
+*.log
+*.mp4
+*.env
