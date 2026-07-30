@@ -16,13 +16,21 @@
 # CONFIGURACIÓN PROPORCIONADA — NO MODIFICAR
 # ============================================================
 
-# Prepara las herramientas de ROS en la computadora del estudiante.
+# Estas son las variables de entorno que tu script necesita para encontrar a
+# Nexus: cargan las herramientas de ROS, eligen la implementación de red y fijan
+# el dominio en el que publica el robot.
+#
+# Tu terminal las recibe cuando ejecutas tu comando personal de conexión. Pero un
+# servicio de systemd NO hereda el entorno de tu terminal: arranca casi vacío.
+# Por eso el script las define él mismo, y así funciona igual lanzado a mano que
+# lanzado como servicio.
+#
+# Ninguna de estas líneas contiene tu token. Nunca lo copies aquí.
 source /opt/ros/humble/setup.bash
-
-# Si tu conexión con Nexus se apoya en un archivo de configuración, cárgalo
-# aquí. Consulta la pestaña Guía para saber cuál es.
-# Nunca guardes el token dentro del proyecto.
-# source /ruta/de/tu/configuracion.env
+export RMW_IMPLEMENTATION=rmw_fastrtps_cpp
+export FASTRTPS_DEFAULT_PROFILES_FILE=/var/lib/kalman/fastdds.xml
+export ROS_DOMAIN_ID=20
+export ROS_IPV6=on
 
 # ============================================================
 # CONFIGURACIÓN DEL MONITOR
