@@ -16,18 +16,14 @@ StartLimitBurst=3
 Type=simple
 
 # >>> TU CONFIGURACIÓN — EL USUARIO
-# El servicio necesita saber con qué usuario ejecutar el monitor. Es el tuyo, el
-# de esta computadora. Si no recuerdas cómo se llama, `whoami` te lo dice.
+# Con qué usuario ejecutará el monitor: el tuyo. `whoami` te dice cómo se llama.
 User=
 # <<< FIN DE TU CONFIGURACIÓN
 
 # >>> TU CONFIGURACIÓN — LA RUTA Y EL INTERVALO
-# Aquí va el comando que lanzará el servicio, todo en una sola línea: primero la
-# ruta completa hasta tu monitor_nexus.sh, un espacio, y después el intervalo en
-# segundos que mediste.
-#
-# La ruta tiene que ser completa. El servicio no se ejecuta desde tu carpeta, así
-# que no entendería algo como ./monitor_nexus.sh
+# El comando que lanzará el servicio, en una sola línea: la ruta completa hasta tu
+# monitor_nexus.sh, un espacio, y el intervalo que mediste. Completa, no ./algo:
+# el servicio no se ejecuta desde tu carpeta.
 ExecStart=
 # <<< FIN DE TU CONFIGURACIÓN
 

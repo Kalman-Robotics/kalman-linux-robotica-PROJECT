@@ -45,28 +45,18 @@ INTERVALO=
 # <<< FIN DE TU CÓDIGO
 
 # >>> TU CÓDIGO — LA COMPROBACIÓN DEL INTERVALO
-# Si INTERVALO quedó vacío, es que se ejecutó el script sin pasarle nada. En ese
-# caso no debe arrancar el monitor: tiene que avisar y terminar.
+# Si se ejecutó el script sin ningún número, el monitor no debe arrancar: muestra
+# este mensaje y termina devolviendo un valor distinto de cero.
 #
-# Comportamiento que se busca:
-#
-#   $ ./monitor_nexus.sh
 #   Uso: ./monitor_nexus.sh SEGUNDOS
-#   $
-#
-# La línea con $ delante es lo que escribe quien lo ejecuta. La otra es el mensaje
-# que muestras tú. Después de mostrarlo, termina el script devolviendo un valor
-# distinto de cero.
 # <<< FIN DE TU CÓDIGO
 
 # >>> TU CÓDIGO — LA CARPETA DE REGISTROS
-# Guarda en LOG_DIR la ruta de la carpeta `logs` de tu `mision_nexus`, al lado de
-# la carpeta `datos` que creaste en la Parte 1. No hace falta que exista: la
-# siguiente línea la crea.
+# Guarda en LOG_DIR la ruta de la carpeta `logs` de tu `mision_nexus`, junto a la
+# carpeta `datos` de la Parte 1. No hace falta crearla: la línea de abajo lo hace.
 #
-# Escribe la ruta COMPLETA, desde tu carpeta personal. Una ruta relativa como
-# `logs` o `../logs` parecería funcionar al probarlo a mano, pero systemd lanza el
-# script desde otro directorio y crearía la carpeta en un sitio equivocado.
+# Escribe la ruta completa desde tu carpeta personal. Una relativa parecería
+# funcionar al probarlo a mano, pero systemd ejecuta el script desde otro sitio.
 LOG_DIR=
 # <<< FIN DE TU CÓDIGO
 
@@ -85,16 +75,14 @@ capturar_estado() {
     TELEMETRIA=$(ros2 topic echo --once /telemetry 2>/dev/null)
 
     # >>> TU CÓDIGO — LA LECTURA FALLIDA
-    # La línea de arriba intentó leer el robot. Puede fallar: sin conexión, o con
-    # la reserva ya terminada. Comprueba si funcionó consultando el código de
-    # salida que dejó ese comando.
+    # La lectura de arriba puede fallar: sin conexión, o con la reserva terminada.
+    # Consulta su código de salida y, si falló, muestra este mensaje y termina
+    # devolviendo un valor distinto de cero.
     #
-    # Si falló, muestra en la terminal
     #   No se pudo leer la telemetría de Nexus
-    # y termina el script devolviendo un valor distinto de cero.
     #
-    # El código de salida es siempre el del ÚLTIMO comando ejecutado, así que
-    # consúltalo antes de hacer ninguna otra cosa.
+    # Ojo: el código de salida es el del último comando, así que míralo antes de
+    # ejecutar nada más.
     # <<< FIN DE TU CÓDIGO
 
     # NO MODIFICAR — identifica la muestra y abre su bloque en el registro.
@@ -113,16 +101,12 @@ capturar_estado() {
         dist_right_mm
     do
         # >>> TU CÓDIGO — EL FILTRO DE CADA CAMPO
-        # Este bloque se repite ocho veces, una por campo. En cada vuelta, CAMPO
-        # contiene el nombre de uno de ellos: primero odom_pos_x, luego
-        # odom_pos_y, y así hasta dist_right_mm.
+        # Esto se repite ocho veces: en cada vuelta CAMPO vale uno de los nombres
+        # de la lista de arriba.
         #
         # Saca de TELEMETRIA la línea de ese CAMPO y añádela al final de LOG_FILE.
-        # Es el mismo filtrado que hiciste en la Parte 1, solo que el texto está
-        # ahora en una variable en vez de en un archivo.
-        #
-        # Al terminar las ocho vueltas, la muestra debe tener ocho líneas: ni una
-        # más ni una menos.
+        # Mismo filtrado que en la Parte 1, con el texto en una variable en vez de
+        # en un archivo. Cada muestra debe quedar con ocho líneas, ni una más.
         :
         # <<< FIN DE TU CÓDIGO
     done
