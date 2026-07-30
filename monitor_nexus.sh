@@ -9,8 +9,9 @@
 #   >>> TU CÓDIGO — TODO N
 #   <<< FIN DE TU CÓDIGO
 #
-# Todo lo marcado como NO MODIFICAR forma parte de la infraestructura
-# proporcionada: es la parte que habla con el robot.
+# Todo lo marcado como NO MODIFICAR ya viene resuelto: la configuración de la
+# conexión, el comando que lee el robot, la lista de campos y el formato del
+# registro.
 
 # ============================================================
 # CONFIGURACIÓN PROPORCIONADA — NO MODIFICAR
